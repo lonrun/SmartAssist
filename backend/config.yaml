@@ -1,0 +1,10 @@
+database:
+  host: localhost
+  port: 27017
+  username: user
+  password: password
+  name: smartassist
+  url: mongodb://user:password@localhost:27017/smartassist
+
+logger:
+  level: info

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    environment:
+      - ENV_VAR=production
+    command: ["./app"]
+
+  db:
+    image: postgres:13.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5432:5432"
+
+
+# This docker-compose.yaml file defines two services:
+# 
+# app: The backend server application.
+# Builds the Docker image using the current directory.
+# Maps port 8080 on the host to port 8080 in the container.
+# Mounts the current directory to /app in the container.
+# Sets the environment variable ENV_VAR to production.
+# Runs the command ./app to start the server.
+# db: A PostgreSQL database instance.
+# Uses the postgres:13.3 image from Docker Hub.
+# Sets the POSTGRES_USER and POSTGRES_PASSWORD environment variables.
+# Maps port 5432 on the host to port 5432 in the container.
